@@ -1,50 +1,29 @@
 package pkg1;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class R22 {
 
-	public static void main(String[] args) {
-		List <String>months=new ArrayList<>();
-		List <Integer>days=new ArrayList<>();
-		List <String>dayOfWeek=new ArrayList<>();
-		months.add("Jan");
-		months.add("Feb");
-		months.add("Mar");
-		months.add("Apr");
-		months.add("May");
-		months.add("Jun");
-		months.add("Jul");
-		months.add("Aug");
-		months.add("Sep");
-		months.add("Oct");
-		months.add("Nov");
-		months.add("Dec");
-		days.add(31);
-		days.add(28);
-		days.add(31);
-		days.add(30);
-		days.add(31);
-		days.add(30);
-		days.add(31);
-		days.add(31);
-		days.add(30);
-		days.add(31);
-		days.add(30);
-		days.add(31);
-		dayOfWeek.add("Mon");
-		dayOfWeek.add("Tue");
-		dayOfWeek.add("Wed");
-		dayOfWeek.add("Thu");
-		dayOfWeek.add("Fri");
-		dayOfWeek.add("Sat");
-		dayOfWeek.add("Sun");
+	public static void main(String[] args) throws IOException{
+		List <String>months=List.of("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+		List <Integer>days=List.of(31,28,31,30,31,30,31,31,30,31,30,31);
+		List <String>dayOfWeek=List.of("Mon","Tue","Wed","Thu","Fri","Sat","Sun");
+		FileWriter fw1=new FileWriter("Calendar2025.txt");
+		int count=2;
+		String s1="";
 		for(int j=0;j<12;j++) {
 			for(int i=1;i<days.get(j)+1;i++) {
-				System.out.println(months.get(j)+" "+i);
+				s1=months.get(j)+" "+i+" "+dayOfWeek.get(count%7);
+				fw1.write(s1+"\n");
+				count++;
 			}
+			fw1.write("\n");
 			System.out.println();
 		}
+		fw1.close();
+		
 	}
 
 }
